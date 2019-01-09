@@ -9,6 +9,14 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        // 配置ndk
+//        externalNativeBuild {
+//            cmake {
+//                arguments '-DANDROID_TOOLCHAIN=clang'  // 不同平台设置不同的参数
+//            }
+//        }
+
     }
     buildTypes {
         release {
@@ -16,6 +24,13 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+//    externalNativeBuild {
+//        cmake {
+//            path "src/main/cpp/CMakeLists.txt"
+//        }
+//    }
+
 }
 
 dependencies {

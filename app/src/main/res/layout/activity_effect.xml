@@ -4,7 +4,7 @@
     android:layout_height="match_parent">
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/bt_start"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -12,26 +12,35 @@
         android:text="开始" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/bt_normal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/button2"
+        android:layout_below="@+id/bt_start"
         android:layout_alignParentStart="true"
         android:text="正常" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/bt_speed_up"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/button2"
-        android:layout_toEndOf="@+id/button2"
+        android:layout_below="@+id/bt_start"
+        android:layout_toEndOf="@+id/bt_start"
         android:text="加速" />
 
     <Button
-        android:id="@+id/button5"
+        android:id="@+id/bt_slow_down"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/button2"
-        android:layout_toEndOf="@+id/button4"
+        android:layout_below="@+id/bt_start"
+        android:layout_toEndOf="@+id/bt_speed_up"
         android:text="减速" />
+
+    <TextView
+        android:id="@+id/tv_result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/bt_normal"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="0dp"
+        android:text="" />
 </RelativeLayout>
