@@ -50,6 +50,7 @@ public class FileActivity extends AppCompatActivity {
     // 主线程和后台播放线程数据同步
     private volatile boolean isPlaying;
     private MediaPlayer mediaPlayer;
+    private volatile boolean isRecording;
 
 
     @SuppressLint("ClickableViewAccessibility")
@@ -120,10 +121,8 @@ public class FileActivity extends AppCompatActivity {
         executorService.submit(new Runnable() {
             @Override
             public void run() {
-
                 // 释放之前录音的recorder
                 releaseRecorder();
-
                 // 执行录音逻辑， 如果失败提示用户
                 if (!doStart()) {
                     recordFail();
@@ -172,9 +171,10 @@ public class FileActivity extends AppCompatActivity {
             mediaRecorder.stop();
             // 记录停止时间， 统计时长
             stopRecordTime = System.currentTimeMillis();
+            isRecording = false;
             // 只接受超过3秒的录音， 在UI上显示出来
             final int second = (int) ((stopRecordTime - startRecordTime) / 1000);
-            if (second > 0) {
+            if (second > 3) {
                 // 在主线程改UI 显示出来
                 mainThreadHandler.post(new Runnable() {
                     @Override
@@ -229,6 +229,7 @@ public class FileActivity extends AppCompatActivity {
             mediaRecorder.start();
             // 记录开始录音的时间， 用于统计时长
             startRecordTime = System.currentTimeMillis();
+            isRecording = true;
         } catch (IOException | RuntimeException e) {
             e.printStackTrace();
             // 捕获异常，避免闪退返回false,提醒用户失败

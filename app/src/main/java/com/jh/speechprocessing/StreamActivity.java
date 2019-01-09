@@ -226,7 +226,7 @@ public class StreamActivity extends AppCompatActivity {
             stopRecordTime = System.currentTimeMillis();
             // 大于3秒， 在主线程UI显示
             final int second = (int) ((stopRecordTime - startRecordTime) / 1000);
-            if (second > 0) {
+            if (second > 3) {
                 // 在主线程改UI 显示出来
                 mainThreadHandler.post(new Runnable() {
                     @Override
